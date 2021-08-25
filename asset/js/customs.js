@@ -76,7 +76,32 @@ function goToByScroll(id) {
         },
         'fast');
 }
+        
+$('#survey-form').on('submit', (e) => {
+    var form = new FormData();
+    form.append("entry.2005620554", "TênForm");
+    form.append("entry.1065046570", "Địa chỉ 123");
+    form.append("entry.1166974658", "091029109");
+    form.append("entry.839337160", "Note");
 
+    var settings = {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLSfWU6efhV5fMPycACfMHBt3fyDeIgVV5XkwkYazlolLCTFlRQ/formResponse",
+      "method": "POST",
+      "timeout": 0,
+      "headers": {
+        "Cookie": "NID=221=K5D-tr7TNiFKIDNoSTKcu08Fk0Kii7cQmErpsPfAa9BR8gvELPrCPfJrXwIws8DuNMeGXiyn12bHUIpw6S94synZ3iWjFDTH04yrwONEF1S4fBHRUoZT7VBi5k3azdH2Tu2RwW-R4VgOPhy2zU2Oppoyu7XGjC2-EjlUWZLTII4"
+      },
+      "processData": false,
+      "mimeType": "multipart/form-data",
+      "contentType": false,
+      "data": form
+    };
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+});
+        
 $("#sidebar > ul > li > .ladi-link").click(function(e) {
     $(this).parents('.header').find('#sidebar > ul > li > a').removeClass('active');
     $(this).addClass('active');
